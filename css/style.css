@@ -1,0 +1,341 @@
+/* font-family: "Pacifico", cursive;  */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* font-family: "PT Sans Caption", sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+
+/* font-family: "Righteous", sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/*   font-family: "Bree Serif", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    scrollbar-color: #072c4a rgba(0, 0, 0, 0.51) ;
+}
+
+body{
+    font-family: "PT Sans Caption", sans-serif;
+    color: white ;
+}
+
+h1{
+    font-family: "Pacifico", cursive;
+}
+
+h2{
+    font-family: "Righteous", sans-serif;
+}
+
+.alert-font{
+    font-family: "Bree Serif", serif;
+}
+
+/* -----------------startup-animtaion---------------------*/ 
+
+.startup-top{
+    min-height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #233547;
+    width: 100%;
+    z-index: 10000;
+    animation: top 2s ;
+    animation-fill-mode: both;
+}
+
+@keyframes top{
+    from{
+        transform: translatey(0);
+    }
+    to{
+        transform: translatey(-100%);
+    }
+}
+
+.startup-bottom{
+    min-height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #233547;
+    width: 100%;
+    z-index: 10000;
+    animation: bottom 2s ;
+    animation-fill-mode: both;
+}
+
+@keyframes bottom{
+    from{
+        transform: translatey(0);
+    }
+    to{
+        transform: translatey(100%);
+        display: none;
+    }
+}
+
+
+/*-------------------------------------------*/
+
+header{
+    transition: 0.5s;
+}
+
+header .container{
+    scale: 2;
+    animation:scale 1.5s ;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes scale{
+    from{
+        scale: 2;
+    }
+    to{
+        scale: 1;
+    }
+}
+
+header h1{
+    width: fit-content;
+    cursor: default;
+}
+
+header h1::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    height: 25%;
+    width: 100%;
+    background-color: #00416a;
+    z-index: -1;
+    transition: 0.4s;
+}
+
+header h1:hover::after{
+    height: 65%;
+}
+
+/*--------- dark-mode-icon --------*/
+
+.dark-mode {
+    right: 5%;
+    z-index: 9999;
+}
+
+.dark-mode label{
+    height: 30px;
+}
+
+.dark-mode i {
+    cursor: pointer;
+    transition: 0.4s;
+    color: rgb(177, 177, 177);
+}
+
+.mode {
+    display: none;
+}
+
+.dark-mode i:hover {
+    color: white !important;
+}
+
+/*-----------------------------------*/
+
+header .form{
+    border: 2px dotted gray;
+    border-right: 0;
+    border-left: 0;
+}
+
+header .form h2{
+    background: radial-gradient(circle, rgb(140 255 204), #007f9e);
+    background-clip: text;
+    color: transparent;
+    animation: coloring 3s linear infinite;
+    background-size: 500% 500%;
+    
+}
+
+@keyframes coloring {
+    
+    0%{
+        background-position: 0% 0%;
+    }
+    
+    50%{
+        background-position: 100% 100%;
+    }
+    
+    100%{
+        background-position: 0% 0%;
+    }
+}
+
+.form-control{
+    background-color: #121212;
+    border-color:rgba(13, 110, 253, .25) ;
+}
+
+.form-control:focus {
+    background-color:#121212 ;
+    border-color: rgba(13, 110, 253, .25);
+    outline: 0;
+    box-shadow: 0 0px 0px 2px rgba(13, 110, 253, .25);
+}
+
+.done{
+    width: fit-content;
+    margin: 15px auto;
+    text-align: center;
+    animation: done 2s both;
+    transition: 0.5s all;
+}
+
+@keyframes done{
+    0%{
+        opacity: 0;
+        scale: 0;
+        /* transform: translateX(-300%); */
+    }
+    25%{
+        /* transform: translateX(0); */
+        opacity: 1;
+        scale: 1;
+    }
+    50%{
+        /* transform: translateX(0); */
+        opacity: 1;
+        scale: 1;
+    }
+    75%{
+        /* transform: translateX(0); */
+        opacity: 1;
+        scale: 1;
+    }
+    100%{
+        opacity: 0;
+        scale: 0;
+        /* transform: translateX(500%); */
+    }
+}
+
+
+/*------- table ------------------*/
+
+.table>:not(caption)>*>* {
+    background-color: #121212;
+}
+
+.caption-font{
+    font-family: "Righteous", sans-serif;
+}
+
+
+/* ------------- validation message -------------*/
+
+.validation-msg{
+    background-color: rgba(0, 0, 0, 0.601);
+    z-index: 1000000;
+}
+
+.msg-content{
+    width: 500px;
+    background-image: linear-gradient(-23deg, black, #001e3d);
+    box-shadow: 0px 0px 10px 0px #004b88;
+    animation: translateY 1s;
+    transition: 1s;
+}
+
+@keyframes translateY{
+    0%{
+        transform: translateY(-200%);
+    }
+    50%{
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.moves-out{
+    animation: translateX 2s both;
+}
+
+@keyframes translateX{
+    0%{
+        transform: translateX(0);
+    }
+    /* 50%{
+        transform: translateX(50%);
+    } */
+    100%{
+        transform: translateX(200%);
+    }
+}
+
+.msg-content  .close{
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.msg-content  .close:hover{
+    color: #ec3543;
+}
+
+/*------ validation check animation---*/
+.shake{
+    animation: shake .13s 3;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.delete-confirmed{
+    animation: show 2s;
+}
+
+@keyframes show{
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    25%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    75%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}

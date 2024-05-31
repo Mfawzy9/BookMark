@@ -1,0 +1,143 @@
+
+
+
+
+html:has(.dark-mode input:checked){
+    scrollbar-color: auto ;
+}
+
+body:has(.dark-mode input:checked) ::selection {
+    background-color: #fec260;
+    color: #352e28;
+}
+
+body:has(.dark-mode input:checked) header .dark-mode i{
+    color: #4e4a4a;
+}
+
+body:has(.dark-mode input:checked) header .dark-mode i:hover{
+    color: black !important;
+}
+
+body:has(.dark-mode input:checked) header {
+    background-color: #f7ecde;
+    color: #352e28;
+}
+
+
+body:has(.dark-mode input:checked) header h1{
+    color: #352e28;
+    z-index: 2;
+}
+
+body:has(.dark-mode input:checked) header h1:after{
+    background-color: #fec260;
+}
+
+body:has(.dark-mode input:checked) header .form{
+    border: 2px dotted #352e28;
+    border-right: 0;
+    border-left: 0;
+}
+
+body:has(.dark-mode input:checked) header .form h2{
+    background: radial-gradient(circle, rgb(0 106 47), #d1512d);
+    background-clip: text;
+    color: transparent;
+    animation: coloring 3s linear infinite;
+    background-size: 500% 500%;
+}
+
+body:has(.dark-mode input:checked) header .form-control{
+    background-color: white;
+    color: black;
+}
+
+body:has(.dark-mode input:checked) header .form-control:focus{
+    border-color: #d99c39;
+    box-shadow: 0 0 5px 1px #d99c39;
+}
+
+body:has(.dark-mode input:checked) header .form-control::placeholder{
+    color: gray;
+}
+
+/*------- validation --------*/
+
+body:has(.dark-mode input:checked) header .form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #198754;
+}
+
+body:has(.dark-mode input:checked) header .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 .25rem rgba(25, 135, 84, 0.302);
+}
+
+body:has(.dark-mode input:checked) header .form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545;
+}
+
+body:has(.dark-mode input:checked) header .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 .25rem rgba(220, 53, 69, 0.322);
+}
+
+body:has(.dark-mode input:checked) header #nameMsgInvalid{
+    background-color: #f8d7da ;
+    color: #58151c;
+    border-color:#f1aeb5;
+}
+
+body:has(.dark-mode input:checked) header #nameMsgValid{
+    background-color: #d1e7dd;
+    color: #0a3622;
+    border-color: #a3cfbb;
+}
+
+body:has(.dark-mode input:checked) header #urlMsgInvalid{
+    background-color: #f8d7da ;
+    color: #58151c;
+    border-color:#f1aeb5;
+}
+
+body:has(.dark-mode input:checked) header #urlMsgValid{
+    background-color: #d1e7dd;
+    color: #0a3622;
+    border-color: #a3cfbb;
+}
+
+/*----------------------------------*/
+
+body:has(.dark-mode input:checked) header .form .add,
+body:has(.dark-mode input:checked) header .form .edit{
+    background-color: #D1512D;
+    border-color: #D1512D;
+}
+
+body:has(.dark-mode input:checked) header .form .add:hover,
+body:has(.dark-mode input:checked) header .form .edit:hover{
+    background-color: #BB4120;
+}
+
+body:has(.dark-mode input:checked) header #done,
+body:has(.dark-mode input:checked) header #updated,
+body:has(.dark-mode input:checked) header .delete-confirmed{
+    background-color: #cff4fc;
+    color: #055160;
+    border-color: #9eeaf9;
+}
+
+body:has(.dark-mode input:checked) header .table>:not(caption)>*>*{
+    background-color: white;
+    color: black;
+    border-color:#dee2e6 ;
+}
+
+body:has(.dark-mode input:checked) header .table caption{
+    color:#544a42 ;
+}
+
+body:has(.dark-mode input:checked) header .validation-msg .msg-content{
+    background-image: linear-gradient(-23deg, wheat, #ffffff);
+    box-shadow: 0px 0px 5px 0px #ffffff;
+}

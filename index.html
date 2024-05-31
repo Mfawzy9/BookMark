@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark</title>
+    <link rel="shortcut icon" href="media/imgs/bookmark-icon.png" type="image/x-icon">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!--fontawesome-->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!--main css file-->
+    <link rel="stylesheet" href="css/style.css" />
+    <!--Dark-mode-->
+    <link rel="stylesheet" href="css/mode.css" />
+  </head>
+  <body data-bs-theme="dark">
+    
+    <header class="py-5 position-relative overflow-hidden min-vh-100">
+      <!--startup-animtaion-->
+      <div class="startup-top">
+        <div class="top">
+        </div>
+      </div>
+      <div class="startup-bottom">
+        <div class="bottom">
+        </div>
+      </div>
+      <!--dark-mode-->
+      <div class="dark-mode position-absolute fs-2">
+        <label for="mode">
+          <i onclick="dModeIcon(this)" id="darkMode" class="fa-regular fa-sun"></i>
+          <input type="checkbox" id="mode" class="mode">
+        </label>
+      </div>
+
+      <div class="container text-center d-flex justify-content-center align-items-center flex-column">
+        <h1 class="display-4 position-relative">Bookmarker</h1>
+
+
+        <!--form-->
+        <div class="form py-3 px-3 mt-5 mb-4 w-100 position-relative ">
+          <h2 class="fs-3 mb-4"><i class="fa-solid fa-bookmark"></i> Bookmark your favorite sites <i class="fa-solid fa-bookmark"></i></h2>
+          <!--site-name-input-->
+          <div class="text-start">
+            <label for="siteNameInput" class="form-label fw-semibold"><i class="fa-solid fa-book-bookmark pe-2"></i>Site Name</label>
+            <input id="siteNameInput" oninput="validationName()" type="text" class="form-control" placeholder="Bookmark Name">
+            <p id="nameMsgInvalid" class="alert alert-danger mt-1 d-none alert-font"><i class="fa-solid fa-circle-exclamation pe-2"></i>Enter a name that starts with at least 3 letters and is no longer than 30 characters!</p>
+            <p id="nameMsgValid" class="alert alert-success mt-1 d-none alert-font"><i class="fa-solid fa-circle-check pe-2"></i>Name validated</p>
+          </div>
+
+          <!--site-url-input-->
+          <div class="my-4 text-start">
+            <label for="siteUrlInput" class="form-label fw-semibold"><i class="fa-solid fa-link pe-2"></i>Site URL</label>
+            <input id="siteUrlInput" oninput="validationUrl()" type="url" class="form-control" placeholder="Website URL">
+            <p id="urlMsgInvalid" class="alert alert-danger mt-1 d-none alert-font"><i class="fa-solid fa-circle-exclamation pe-2"></i>Enter a valid URL!</p>
+            <p id="urlMsgValid" class="alert alert-success mt-1 d-none alert-font"><i class="fa-solid fa-circle-check pe-2"></i>URL validated</p> 
+          </div>
+
+          <!--added alert-->
+          <p id="done" class="d-none done alert alert-info fs-5"><i class="fa-regular fa-thumbs-up fa-bounce pe-2 fs-3"></i>bookmark added<span class="fa-shake d-inline-block fs-3">!</span></p>
+          <!--updated alert-->
+          <p id="updated" class="d-none done alert alert-info fs-5"><i class="fa-regular fa-thumbs-up fa-bounce pe-2 fs-3"></i>bookmark updated<span class="fa-shake d-inline-block fs-3">!</span></p>
+          <!--add btn-->
+          <button type="submit" id="saveSite" onclick="addSite()" class="add btn btn-primary px-5 py-2">Save bookmark</button>
+          <!--edit btn-->
+          <button type="submit" id="editSite" onclick="editData()" class="edit btn btn-primary px-5 py-2 d-none">Update your bookmark</button>
+        </div>
+
+
+        <!--search-box-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+              <div class="input-group mb-3 mx-auto">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input id="searchInput" oninput="searchitems()" type="search" class="form-control" placeholder="search by website name" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- caption , delete all btn-->
+        <div class="container">
+          <div class="row justify-content-between">
+            <div class="col-12 col-sm-6">
+              <h3 class="fs-5 caption-font">Your favorite sites:</h3>
+            </div>
+            <div class="col-12 col-sm-6 text-end">
+              <button id="deleteAllBtn" onclick="deleteAll()" class="btn btn-danger d-none mb-1"><i class="fa-solid fa-trash-can pe-2"></i>Delete All Bookmarks!</button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between table m-0">
+          </div>
+        </div>
+
+        <!--table-->
+        <div class="container">
+          <div class="table-responsive">
+            <table class="table text-center caption-top">
+              <thead class="bg-black">
+                <tr class="text-capitalize">
+                  <th>ID</th>
+                  <th>website name</th>
+                  <th>visit</th>
+                  <th>edit</th>
+                  <th>delete</th>
+                </tr>
+              </thead>
+              <tbody id="tableData">
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+      <!-- validation window-->
+      <div id="exitMsg" class="validation-msg d-none position-absolute top-0 start-0 h-100 w-100 d-flex justify-content-center align-items-center">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+          <div class="msg-content d-flex flex-column align-items-center p-4 mx-auto rounded">
+            <div class="header-icons d-flex justify-content-between w-100 mb-4">
+              <img src="media/imgs/validation error.gif" class="" alt="">
+              <i onclick="closingValidtionWindow()" class="fa-solid fa-xmark fs-3 close"></i>
+            </div>
+            <p class="alert-font fw-semibold fs-4">Site Name or Url is not valid, Please follow the rules below :</p>
+            <span class="w-100 my-3"><i class="fa-regular fa-circle-right pe-2 text-danger fs-3"></i>Site name must contain at least 3 characters</span>
+            <span class="w-100"><i class="fa-regular fa-circle-right pe-2 text-danger fs-3"></i>Site URL must be a valid one</span>
+          </div>
+        </div>
+      </div>
+
+      <!--delete confirm!-->
+      <div id="deleteConfirm" class="validation-msg d-none position-absolute top-0 start-0 h-100 w-100 d-flex justify-content-center align-items-center">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+          <div class="msg-content d-flex flex-column align-items-center p-4 mx-auto rounded">
+            <div class="header-icons d-flex justify-content-between w-100">
+              <i class="fa-solid fa-triangle-exclamation fa-shake text-danger fs-1"></i>
+              <i onclick="deleteCancel()" class="fa-solid fa-xmark fs-3 close"></i>
+            </div>
+            <p class="alert-font fw-semibold fs-4">Are You Sure?</p>
+            <div class="delete-btns d-flex justify-content-around w-100">
+              <button onclick="deleteConfirmed()" class="btn btn-danger d-inline-block">delete all</button>
+              <button onclick="deleteCancel()" class="btn btn-info d-inline-block">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="deleteConfirmed" class="delete-confirmed-window d-none text-center validation-msg position-absolute top-0 start-0 h-100 w-100 d-flex justify-content-center align-items-center">
+        <p class="delete-confirmed alert alert-info d-flex flex-column align-items-center p-5"><i class="fa-solid fa-check fa-fade pe-2 display-1"></i><span>All bookmarks has been deleted</span></p>
+      </div>
+
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="js/index.js"></script>
+    <!--bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
