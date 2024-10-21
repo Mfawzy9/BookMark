@@ -7,3 +7,4 @@ A user-friendly app that allows users to save, edit, and delete their favorite w
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): Structure of the app.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS): Styling and presentation.
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): Core programming language.
+- [Bootstrap](https://getbootstrap.com/): Responsive CSS framework.
